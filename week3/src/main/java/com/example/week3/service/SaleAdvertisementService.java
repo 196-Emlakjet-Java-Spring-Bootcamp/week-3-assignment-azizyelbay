@@ -1,5 +1,6 @@
 package com.example.week3.service;
 
+import com.example.week3.dto.SaleAdvertisementDto;
 import com.example.week3.model.SaleAdvertisement;
 import com.example.week3.repository.SaleAdvertisementRepository;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -17,9 +18,15 @@ public class SaleAdvertisementService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public SaleAdvertisement createSaleAdvertisement(SaleAdvertisement saleAdvertisement) {
-        kafkaTemplate.send("sale-topic", saleAdvertisement);
-        return saleAdvertisementRepository.save(saleAdvertisement);
+    public SaleAdvertisement createSaleAdvertisement(SaleAdvertisementDto saleAdvertisementDto) {
+        SaleAdvertisement saleAdvertisement = new SaleAdvertisement();
+        saleAdvertisement.setTitle(saleAdvertisementDto.getTitle());
+        saleAdvertisement.setDetailMessage(saleAdvertisementDto.getDetailMessage());
+        saleAdvertisement.setPhoto(saleAdvertisementDto.getPhoto());
+        // send kafka queue (producer)
+        SaleAdvertisement advToKafka = saleAdvertisementRepository.save(saleAdvertisement);
+        kafkaTemplate.send("sale-topic", advToKafka);
+        return advToKafka;
     }
 
     public List<SaleAdvertisement> getAll(){

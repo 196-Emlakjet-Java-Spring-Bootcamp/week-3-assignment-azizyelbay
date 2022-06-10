@@ -1,5 +1,6 @@
 package com.example.week3.controller;
 
+import com.example.week3.dto.SaleAdvertisementDto;
 import com.example.week3.model.SaleAdvertisement;
 import com.example.week3.service.SaleAdvertisementService;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,8 @@ public class SaleAdvertisementController {
     }
 
     @PostMapping
-    public SaleAdvertisement createSaleAdvertisement(@RequestBody SaleAdvertisement saleAdvertisement){
-        return saleAdvertisementService.createSaleAdvertisement(saleAdvertisement);
+    public SaleAdvertisement createSaleAdvertisement(@RequestBody SaleAdvertisementDto saleAdvertisementDto){
+        return saleAdvertisementService.createSaleAdvertisement(saleAdvertisementDto);
     }
 
     @GetMapping

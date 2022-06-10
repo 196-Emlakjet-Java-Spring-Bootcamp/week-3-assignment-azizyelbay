@@ -30,3 +30,11 @@ docker compose up
 ```
 -----
 run spring boot project
+
+![image](https://user-images.githubusercontent.com/34959497/173142359-70f942b1-ec75-458e-b98a-859906d295b0.png)
+
+![image](https://user-images.githubusercontent.com/34959497/173142436-5c03c79c-13a7-4f4a-afeb-5dc3dd6d1cf1.png)
+
+## Apache kafka ui
+![image](https://user-images.githubusercontent.com/34959497/173142604-b84602b5-0769-482b-8f46-61ae6b35345d.png)
+
